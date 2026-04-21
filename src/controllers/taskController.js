@@ -20,7 +20,7 @@ const getListTaskByProject = async (req, res) => {
 
         if (listProject.length == 0){
             res.status(200).json({
-                success: true,
+                success: false,
                 message: "Task not found",
             });
         }else{
@@ -31,7 +31,7 @@ const getListTaskByProject = async (req, res) => {
                 });
             }
     } catch (error) {
-        console.error('Task Not Found: ' + error.message);
+        // console.error('Task Not Found: ' + error.message);
         res.status(500).json({ error: 'Error returning task!' });
     } 
 }
@@ -48,7 +48,7 @@ const getListTaskById = async (req, res) => {
 
         if (listProject.length == 0){
             res.status(200).json({
-                success: true,
+                success: false,
                 message: "Task not found",
             });
         }else{
@@ -59,7 +59,7 @@ const getListTaskById = async (req, res) => {
             });
         }
     } catch (error) {
-        console.error('Task Not Found: ' + error.message);
+        // console.error('Task Not Found: ' + error.message);
         res.status(500).json({ error: 'Error returning task!' });
     } 
 }
@@ -76,7 +76,7 @@ const getListTaskAll = async (req, res) => {
 
         if (listProject.length == 0){
             res.status(200).json({
-                success: true,
+                success: false,
                 message: "Task not found",
             });
         }else{
@@ -87,7 +87,7 @@ const getListTaskAll = async (req, res) => {
             });
         }
     } catch (error) {
-        console.error('Task Not Found: ' + error.message);
+        // console.error('Task Not Found: ' + error.message);
         res.status(500).json({ error: 'Error returning task!' });
     } 
 }
@@ -118,7 +118,7 @@ const addNewTask = async  (req, res) => {
             // data: project,
         });
     } catch (error) {
-        console.error('Error adding new task: ' + error.message);
+        // console.error('Error adding new task: ' + error.message);
         res.status(500).json({ error: 'Error adding new task!' });
     }
 }
@@ -142,19 +142,19 @@ const editTask = async  (req, res) => {
         if (!task) {
             return res.status(404).json({
                 success: false,
-                message: "Project not found"
+                message: "Task not found"
             });
         }
 
         res.status(200).json({
             success: true,
-            message: "Project edited succesfully",
+            message: "Task edited succesfully",
             // data: project,
         });
 
     }catch(error){
-        console.error('Error editing project: ' + error.message);
-        res.status(500).json({ error: 'Error editing project!' });
+        // console.error('Error editing project: ' + error.message);
+        res.status(500).json({ error: 'Error editing task!' });
     }
 }
 
@@ -180,7 +180,7 @@ const removeTask = async (req, res) => {
 
 
     } catch (error) {
-        console.error('Error deleting task: ' + error.message);
+        // console.error('Error deleting task: ' + error.message);
         res.status(500).json({ error: 'Error deleting task!' });
     } 
 }

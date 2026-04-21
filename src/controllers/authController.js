@@ -25,7 +25,7 @@ const register = async  (req, res) => {
             data: user,
         });
     } catch (error) {
-        console.error('Error registering user: ' + error.message);
+        // console.error('Error registering user: ' + error.message);
         res.status(500).json({ error: 'Error registering user!' });
     } 
 }
@@ -72,15 +72,22 @@ const login = async (req, res) => {
         // remove password before sending response
         delete user.password;
 
+        res.cookie("token", token, {
+            httpOnly: true,        // cannot be accessed via JS (prevents XSS)
+            secure: false,         // true in production (HTTPS)
+            sameSite: "none",       // or "strict"
+            maxAge: 24 * 60 * 60 * 1000 // 1 day
+        });
+
+        // res.json({ message: "Login success" });
+
         res.json({
             success: true,
             message: "Login success",
-            token,
-            user,
         });
 
     } catch (error) {
-        console.error(error);
+        // console.error(error);
         res.status(500).json({ success: false, message: "Login error", });
     }
 };
