@@ -4,13 +4,18 @@ const authRoute = require('./src/routes/authRoute');
 const projectRoute = require('./src/routes/projectRoute');
 const taskRoute = require('./src/routes/taskRoute');
 const { sequelize } = require('./src/connections/postgredb');
+const cookieParser = require("cookie-parser");
 require('dotenv').config();
 
 const app = express();
 const PORT_SERVER = process.env.PORT_SERVER || 3000;
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: process.env.FE_URL,
+    credentials: true
+}));
 app.use(express.json());
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
     res.json({ message: "API running" });
