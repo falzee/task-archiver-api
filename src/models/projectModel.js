@@ -128,7 +128,7 @@ const deleteProject = async (projectId) => {
             type: QueryTypes.DELETE,
         }
     );
-    console.log(project ?? null);
+    // console.log(project ?? null);
     return project ?? null;
 };
 

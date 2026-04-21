@@ -19,7 +19,7 @@ const getListProject = async (req, res) => {
             });
         }
     } catch (error) {
-        console.error('Project Not Found: ' + error.message);
+        // console.error('Project Not Found: ' + error.message);
         res.status(500).json({ error: 'Error returning project!' });
     } 
 }
@@ -47,7 +47,7 @@ const addNewProject = async  (req, res) => {
             // data: project,
         });
     } catch (error) {
-        console.error('Error adding new project: ' + error.message);
+        // console.error('Error adding new project: ' + error.message);
         res.status(500).json({ error: 'Error adding new project!' });
     }
 }
@@ -68,7 +68,7 @@ const editProject = async  (req, res) => {
             title,
             description
         };
-        console.log("TES:", updatedData);
+        // console.log("TES:", updatedData);
         const project = await updateProject(projectId,updatedData);
         
         if (!project) {
@@ -85,7 +85,7 @@ const editProject = async  (req, res) => {
         });
 
     }catch(error){
-        console.error('Error editing project: ' + error.message);
+        // console.error('Error editing project: ' + error.message);
         res.status(500).json({ error: 'Error editing project!' });
     }
 }
@@ -111,7 +111,7 @@ const removeProject = async (req, res) => {
 
 
     } catch (error) {
-        console.error('Error deleting project: ' + error.message);
+        // console.error('Error deleting project: ' + error.message);
         res.status(500).json({ error: 'Error deleting project!' });
     } 
 }

@@ -159,7 +159,7 @@ const updateTask = async (taskId, taskData) => {
         }
 
         fields.push("updated_at = NOW()");
-        console.log(...fields);
+        // console.log(...fields);
         const [result] = await sequelize.query(
             `
                 UPDATE tasks
