@@ -75,7 +75,7 @@ const login = async (req, res) => {
         res.cookie("token", token, {
             httpOnly: true,        // cannot be accessed via JS (prevents XSS)
             secure: false,         // true in production (HTTPS)
-            sameSite: "none",       // or "strict"
+            sameSite: "lax",       // or "strict"
             maxAge: 24 * 60 * 60 * 1000 // 1 day
         });
 
@@ -92,8 +92,18 @@ const login = async (req, res) => {
     }
 };
 
+const logout = (req, res) => {
+    res.clearCookie("token");
+
+    res.json({
+        success: true,
+        message: "Logged out succesfull",
+    });
+};
+
 
 module.exports = { 
     register,
     login,
+    logout
 };
